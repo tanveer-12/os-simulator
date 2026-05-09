@@ -18,4 +18,7 @@ include_directories(include)
 # etc.
 
 # Minimal main entry point
-add_executable(os_sim main.cpp)
+add_executable(os_sim 
+    main.cpp
+    src/core/Process.cpp
+)
