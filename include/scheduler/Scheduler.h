@@ -20,6 +20,10 @@ public:
     virtual bool shouldPreempt(Process* current, int current_run_time) = 0;
 
     virtual bool isEmpty() const = 0;
+    // Called when a process is preempted
+    // Default: do nothing (FCFS, SJF, RR)
+    // MLFQ overrides this to demote the process
+    virtual void onPreempt(Process* p) { (void)p; }
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef METRICS_COLLECTOR_H
 #define METRICS_COLLECTOR_H
 
-#include "include/events/SimulationObserver.h"
+#include "events/SimulationObserver.h"
 #include <map>
 
 struct ProcessMetrics{
@@ -17,8 +17,8 @@ struct ProcessMetrics{
 
 class MetricsCollector : public SimulationObserver{
 private:
-// a key-value store. here keyed by PID, the metrics collector listens to events and fills
-// this map
+    // a key-value store. here keyed by PID, the metrics collector listens to events and fills
+    // this map
     std::map<int, ProcessMetrics> metrics;
 public:
     void onEvent(const SimulationEvent& event) override;

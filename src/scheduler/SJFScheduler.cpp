@@ -9,7 +9,7 @@ Process* SJFScheduler::pickNext(){
         return nullptr;
     }
     int index = 0;
-    for(int i=1; i<waiting.size(); i++){
+    for(int i=1; i<static_cast<int>(waiting.size()); i++){
         if(waiting[i]->getBurstTime() < waiting[index]->getBurstTime()){
             index = i;
         }

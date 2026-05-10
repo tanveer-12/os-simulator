@@ -16,6 +16,7 @@ include_directories(include)
 set(CORE_SOURCES
     src/core/Process.cpp
     src/core/CPU.cpp
+    src/core/Simulation.cpp
 )
 # Scheduler sources — add each algorithm as you build it
 set(SCHEDULER_SOURCES
@@ -27,7 +28,7 @@ set(EVENT_SOURCES
     
 )
 set(METRICS_SOURCES
-    
+    src/metrics/MetricsCollector.cpp
 )
 # CLI sources
 set(CLI_SOURCES
