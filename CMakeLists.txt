@@ -21,4 +21,5 @@ include_directories(include)
 add_executable(os_sim 
     main.cpp
     src/core/Process.cpp
+    src/core/CPU.cpp
 )
