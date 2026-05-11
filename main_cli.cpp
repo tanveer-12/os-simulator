@@ -2,6 +2,7 @@
 #include "core/Process.h"
 
 #include "scheduler/FCFSScheduler.h"
+#include "scheduler/RoundRobin.h"
 
 #include "cli/CLIRenderer.h"
 #include "metrics/MetricsCollector.h"
@@ -17,11 +18,11 @@ int main() {
     processes.push_back(Process(3, 2, 8));
 
     FCFSScheduler scheduler;
-
+    RoundRobin roundscheduler(2);
     CLIRenderer renderer;
     MetricsCollector metrics;
 
-    Simulation simulation(processes, &scheduler);
+    Simulation simulation(processes, &roundscheduler);
 
     simulation.addObserver(&renderer);
     simulation.addObserver(&metrics);

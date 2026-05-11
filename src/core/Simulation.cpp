@@ -23,6 +23,8 @@ void Simulation::addObserver(SimulationObserver* observer) {
 // Iterate every observer and deliver the event
 // This is the only place observers are notified
 // The simulation never calls cout directly — it only fires events
+// when something meaningful happens in the simulation, it creates SimulationEvent and
+// calls fireEvent, fireEvent iterates the observer list and delivers the event to each one
 void Simulation::fireEvent(const SimulationEvent& event) {
     for (SimulationObserver* observer : observers) {
         observer->onEvent(event);
@@ -50,7 +52,6 @@ void Simulation::run() {
                     p.getPid(),
                     p.getBurstTime()
                 ));
-
                 scheduler->addProcess(&p);
             }
         }
@@ -93,7 +94,7 @@ void Simulation::run() {
         if (!cpu.isBusy() && !scheduler->isEmpty()) {
             Process* next = scheduler->pickNext();
             cpu.assignProcess(next);
-            current_run_time = 0;
+            current_run_time = 0;   // this process is starting fresh
 
             fireEvent(SimulationEvent(
                 EventType::PROCESS_RUNNING,
@@ -122,7 +123,7 @@ void Simulation::run() {
 
             fireEvent(SimulationEvent(
                 EventType::PROCESS_TERMINATED,
-                clock+1,
+                clock+1,    // bcuz process completed at the end of this tick
                 finished->getPid()
             ));
 
