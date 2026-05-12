@@ -35,6 +35,7 @@ set(METRICS_SOURCES
 # CLI sources
 set(CLI_SOURCES
     src/cli/CLIRenderer.cpp
+    src/cli/CLIInterface.cpp
 )
 # We'll add subdirectories as phases are built
 # add_subdirectory(src/core)

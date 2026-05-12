@@ -1,37 +1,39 @@
-#include "core/Simulation.h"
-#include "core/Process.h"
+// #include "core/Simulation.h"
+// #include "core/Process.h"
 
-#include "scheduler/FCFSScheduler.h"
-#include "scheduler/RoundRobin.h"
-#include "scheduler/MLFQScheduler.h"
+// #include "scheduler/FCFSScheduler.h"
+// #include "scheduler/RoundRobin.h"
+// #include "scheduler/MLFQScheduler.h"
 
-#include "cli/CLIRenderer.h"
-#include "metrics/MetricsCollector.h"
+// #include "cli/CLIRenderer.h"
+// #include "metrics/MetricsCollector.h"
 
-#include <vector>
+// #include <vector>
+#include "cli/CLIInterface.h"
 
 int main() {
 
-    std::vector<Process> processes;
+    // std::vector<Process> processes;
 
-    processes.push_back(Process(1, 0, 10));
-    processes.push_back(Process(2, 0, 3));
-    processes.push_back(Process(3, 5, 2));
-    std::vector<int> quantums = {2,4,8};
-    MLFQScheduler mlfqscheduler(3, quantums, 20);
-    FCFSScheduler scheduler;
-    RoundRobin roundscheduler(2);
-    CLIRenderer renderer;
-    MetricsCollector metrics;
+    // processes.push_back(Process(1, 0, 10));
+    // processes.push_back(Process(2, 0, 3));
+    // processes.push_back(Process(3, 5, 2));
+    // std::vector<int> quantums = {2,4,8};
+    // MLFQScheduler mlfqscheduler(3, quantums, 20);
+    // FCFSScheduler scheduler;
+    // RoundRobin roundscheduler(2);
+    // CLIRenderer renderer;
+    // MetricsCollector metrics;
 
-    Simulation simulation(processes, &mlfqscheduler);
+    // Simulation simulation(processes, &mlfqscheduler);
 
-    simulation.addObserver(&renderer);
-    simulation.addObserver(&metrics);
+    // simulation.addObserver(&renderer);
+    // simulation.addObserver(&metrics);
 
-    simulation.run();
+    // simulation.run();
 
-    metrics.printSummary();
-
+    // metrics.printSummary();
+    CLIInterface cli;
+    cli.run();
     return 0;
 }
