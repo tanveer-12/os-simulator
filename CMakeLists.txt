@@ -23,6 +23,7 @@ set(SCHEDULER_SOURCES
     src/scheduler/FCFSScheduler.cpp
     src/scheduler/SJFScheduler.cpp
     src/scheduler/RoundRobin.cpp
+    src/scheduler/MLFQScheduler.cpp
 )
 # Event and metrics sources
 set(EVENT_SOURCES

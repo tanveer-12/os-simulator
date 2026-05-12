@@ -24,6 +24,11 @@ public:
     // Default: do nothing (FCFS, SJF, RR)
     // MLFQ overrides this to demote the process
     virtual void onPreempt(Process* p) { (void)p; }
+    // Returns true if onPreempt already handled re-queuing
+    // MLFQ returns true — simulation loop skips addProcess
+    // All others return false — simulation loop calls addProcess
+    virtual bool requeuesOnPreempt() const { return false; }
+    virtual void tick() {}
 };
 
 #endif

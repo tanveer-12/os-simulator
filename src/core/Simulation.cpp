@@ -87,7 +87,9 @@ void Simulation::run() {
             // MLFQ's onPreempt already re-adds via demote()
             // We handle this uniformly by always calling addProcess
             // MLFQ's addProcess checks existing level so no double-add
-            scheduler->addProcess(preempted);
+            if(!scheduler->requeuesOnPreempt()){
+                scheduler->addProcess(preempted);
+            }
         }
 
         // ── Step 3: Assign CPU if free ─────────────────────────────
@@ -133,6 +135,7 @@ void Simulation::run() {
         }
 
         // ── Step 7: Advance clock ──────────────────────────────────
+        scheduler->tick();
         clock++;
     }
 
