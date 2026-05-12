@@ -13,7 +13,14 @@ public:
 
     void assignProcess(Process* p);
     void tick();    // run current process for one units
-    void releaseProcess();  // called when process finishes
+
+    //detach the current process - caller is responsible for setting state
+    // use this for preemption, where the process returns to READY
+    void releaseProcess(); 
+
+    // detach the current process and mark it TERMINATED
+    // use this only when remaining_time reaches zero
+    void terminateProcess();
 };
 
 #endif

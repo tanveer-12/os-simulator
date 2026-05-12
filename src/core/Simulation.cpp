@@ -129,7 +129,7 @@ void Simulation::run() {
                 finished->getPid()
             ));
 
-            cpu.releaseProcess();
+            cpu.terminateProcess();
             current_run_time = 0;
             terminated_count++;
         }
